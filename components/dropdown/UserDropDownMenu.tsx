@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useCookies } from "@react-native-cookies/cookies";
 import { isatty } from "tty";
 import UserStorage from "../../model/UserStorage";
+import { View, Text, Image } from "react-native";
+import tw from 'twrnc';
 
 type Prop = { visible: boolean };
 
@@ -42,21 +43,21 @@ export default function UserDropDownMenu({ visible }: Prop) {
     }
 
     return (
-        <div className="flex flex-col">
-            <img src={UserStorage.getPfp()} onClick={onClick} className='rounded-full border-indigo-600 w-10 h-10 mr-12 mt-2 border-[3px] top-[-10] cursor-pointer' />
-            <div className={`absolute transition-opacity duration-200 ${isActive ? "opacity-100" : "opacity-0"} ${isActive ? "z-20" : "-z-10"} float-right right-10 top-[-50px] bg-white rounded-lg mx-auto mt-32 w-72 border-[1px] border-yellow-300 overflow-auto`}>
+        <View style={tw`flex flex-col`}>
+            <Image source={require(UserStorage.getPfp())} onPress={onClick} style={tw`rounded-full border-indigo-600 w-10 h-10 mr-12 mt-2 border-[3px] top-[-10] cursor-pointer`}/>
+            <View style={tw`absolute transition-opacity duration-200 ${isActive ? "opacity-100" : "opacity-0"} ${isActive ? "z-20" : "-z-10"} float-right right-10 top-[-50px] bg-white rounded-lg mx-auto mt-32 w-72 border-[1px] border-yellow-300 overflow-auto`}>
             {sections.map((section, i, arr) => {
                 return (
                     <>
-                        <div className={`flex px-2 hover:cursor-pointer hover:bg-gray-100 text-yel text-gray-700 fill-gray-700`} onClick={() => { if(isActive) section.trigger()}}>
-                            <svg className={"my-auto w-6 h-6 ml-2"}><path d={section.svg}/></svg>
-                            <p className="font-inter ml-6 font-bold my-3">{section.name}</p>
-                        </div>
+                        <View style={tw`flex px-2 hover:cursor-pointer hover:bg-gray-100 text-yel text-gray-700 fill-gray-700`} onClick={() => { if(isActive) section.trigger()}}>
+                            <svg style={tw`my-auto w-6 h-6 ml-2`}><path d={section.svg}/></svg>
+                            <p style={tw`font-inter ml-6 font-bold my-3`}>{section.name}</p>
+                        </View>
                         {i != arr.length-1 && <hr/>}
                     </>
                 )
             })}
-        </div>
-        </div>
+        </View>
+        </View>
     );
 }

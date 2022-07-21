@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import Review from "../Review"
+import Review from "./Review"
 
 export default function HomeScreen() {
     return(

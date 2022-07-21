@@ -16,8 +16,9 @@ import {
   StyleSheet
 } from 'react-native';
 
-import HomeScreen from './components/view/HomeScreen';
-import ItemScreen from './components/view/ItemScreen';
+import HomeScreen from './components/views/Home';
+import ItemScreen from './components/views/Item';
+import Orders from './components/views/Orders'
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -32,6 +33,10 @@ const App = () => {
         <Stack.Screen
           name="Item"
           component={ItemScreen}
+        />
+        <Stack.Screen
+          name="Orders"
+          component={Orders}
         />
       </Stack.Navigator>
     </NavigationContainer>
