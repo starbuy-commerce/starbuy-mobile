@@ -6,16 +6,13 @@ import Navbar from "../Navbar"
 import { proxied_host } from "../../api/spec"
 import { RadioButton, Text } from 'react-native-paper';
 import { Snackbar } from "@react-native-material/core";
-import { indigo, pink, purple } from "@react-native-material/core";
 import CreditCardForm from "../payment/CreditCardForm";
 import BoletoForm from "../payment/BoletoForm";
-import MuiAlert, { AlertProps } from '@react-native-material/alert';
-import { useCookies } from "@react-native-cookies/cookies";
 import { post_order } from "../../api/order";
 import { Response } from "../../model/Response";
 import { get_item, ItemWithAverage } from "../../api/item";
 
-import { View, Image  } from "react-native";
+import {View, Image, TouchableOpacity} from "react-native";
 import tw from 'twrnc';
 import { Component } from 'react';
 
@@ -24,13 +21,6 @@ interface Props {
     item: ItemWithAssets,
     quantity: number
 }
-
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-    props,
-    ref,
-) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 export default function OrderCheckout() {
 
@@ -41,42 +31,20 @@ export default function OrderCheckout() {
     const [item, setItem] = useState<ItemWithAssets>();
     const [payment, setPayment] = React.useState('a');
 
-    const [cookies, setCookie] = useCookies();
-
     const [successSnack, setSuccessSnack] = useState(false);
     const [errorSnack, setErrorSnack] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setSuccessSnack(false);
-        setErrorSnack(false);
-    };
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPayment(event.target.value);
-    };
-
-    const controlProps = (item: string) => ({
-        checked: payment === item,
-        onChange: handleChange,
-        value: item,
-        name: 'color-radio-button-demo',
-        inputProps: { 'aria-label': item },
-    });
-
     useEffect(() => get_item(itemId!, (resp: ItemWithAverage) => setItem(resp.item)), [])
 
     async function postOrder() {
-        post_order(itemId!, parseInt(quantity!), cookies.access_token, (resp: Response) => {
+        post_order(itemId!, parseInt(quantity!), 'teste', (resp: Response) => {
             if (resp.status == false) {
                 setErrorSnack(true);
                 setErrorMessage(resp.message);
             }
-            window.location.href = "/orders"
+            //window.location.href = "/orders"
             setSuccessSnack(true);
             setSuccessMessage(resp.message);
         })
@@ -92,34 +60,30 @@ export default function OrderCheckout() {
                     <View style={tw`flex mt-8 ml-20`}>
 
                         <Image source={require(item?.assets[0])} style={tw`w-32 h-32`}/>
-                        
+
                         <View style={tw`font-inter my-auto ml-12 font-normal text-xl text-gray-800 gap-y-4`}>
-                            <Text stylw={tw`mb-3`}><b>COMPRANDO</b>: {item?.item.title}</Text>
+                            <Text style={tw`mb-3`}><b>COMPRANDO</b>: {item?.item.title}</Text>
                             <Text style={tw`mb-3`}><b>QUANTIDADE</b>: {quantity} unidade(s)</Text>
                             <Text><b>PREÇO FINAL:</b> R$ {item?.item.price! * parseInt(quantity!)}</Text>
                         </View>
                     </View>
-                    <Text style={tw`ml-20 mt-20 font-inter font-semibold text-xl text-gray-800`}>FORMA DE PAGAMENTO:</p>
+                    <Text style={tw`ml-20 mt-20 font-inter font-semibold text-xl text-gray-800`}>FORMA DE PAGAMENTO:</Text>
 
                     <View style={tw`flex justify-center gap-24 mt-8`}>
                         <View style={tw`flex`}>
-                            <Radio {...controlProps('a')} sx={{
-                                color: indigo[700],
-                                '&.Mui-checked': {
-                                    color: indigo[700],
-                                },
-                            }}
+                            <RadioButton
+                                value="credito"
+                                status={ payment === 'credito' ? 'checked' : 'unchecked' }
+                                onPress={() => setPayment('credito')}
                             />
                             <Text style={tw`my-auto font-inter font-medium`}>Cartão de crédito</Text>
                         </View>
 
                         <View style={tw`flex`}>
-                            <Radio {...controlProps('b')} sx={{
-                                color: indigo[700],
-                                '&.Mui-checked': {
-                                    color: indigo[700],
-                                },
-                            }}
+                            <RadioButton
+                                value="boleto"
+                                status={ payment === 'boleto' ? 'checked' : 'unchecked' }
+                                onPress={() => setPayment('boleto')}
                             />
                             <Text style={tw`my-auto font-inter font-medium`}>Boleto bancário</Text>
                         </View>
@@ -132,24 +96,16 @@ export default function OrderCheckout() {
                                 : <></>}
                     </View>
 
-                    <View style={tw`flex justify-center mt-10 hover:cursor-pointer`} onPress={(postOrder)}>
-                        <View style={tw`w-1/5 bg-indigo-500 p-2 py-3 rounded-[0.250rem] hover:bg-indigo-600`}>
-                            <Text style={tw`font-inter font-semibold text-lg text-white text-center`}>FINALIZAR PEDIDO</p>
+                    <TouchableOpacity>
+                        <View style={tw`flex justify-center mt-10 hover:cursor-pointer`} onPress={(postOrder)}>
+                            <View style={tw`w-1/5 bg-indigo-500 p-2 py-3 rounded-[0.250rem] hover:bg-indigo-600`}>
+                                <Text style={tw`font-inter font-semibold text-lg text-white text-center`}>FINALIZAR PEDIDO</Text>
+                            </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
 
                 </View>
             </View>
-            <Snackbar open={successSnack} autoHideDuration={4000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                    {successMessage}
-                </Alert>
-            </Snackbar>
-            <Snackbar open={errorSnack} autoHideDuration={4000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-                    {errorMessage}
-                </Alert>
-            </Snackbar>
         </View>
     );
 }

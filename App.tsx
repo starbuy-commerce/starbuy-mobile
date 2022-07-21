@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 
 import HomeScreen from './components/view/HomeScreen';
+import ItemScreen from './components/view/ItemScreen';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -27,6 +28,10 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
+        />
+        <Stack.Screen
+          name="Item"
+          component={ItemScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

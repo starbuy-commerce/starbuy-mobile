@@ -24,7 +24,7 @@ export default function Navbar({ fixed, bottomBar }: Prop) {
     const [search, setSearch] = useState<any>("");
     const Stack = createNativeStackNavigator();
     function query() {
-        if(search != "") 
+        if(search != "")
         const MyStack = () => {
         return (
         < NavigationContainer>
@@ -47,7 +47,7 @@ export default function Navbar({ fixed, bottomBar }: Prop) {
             <View style={tw`bg-white top-0 w-screen z-[99] ${fixed ? "fixed" : ""}`}>
                 <View style={tw`flex justify-between`}>
                     <View style={tw`hidden sm:block`}>
-                        <Image src={logo} style={tw`cursor-pointer md:pr-0 h-16 w-36 md:h-16 md:w-56 m-4`} alt="Starbuy Commerce" onClick={() => window.location.href = "/"} />
+                        <Image source={logo} style={tw`cursor-pointer md:pr-0 h-16 w-36 md:h-16 md:w-56 m-4`} onClick={() => window.location.href = "/"} />
                     </View>
                     <View id="searchbar" style={tw`pt-1 md:pt-3 mt-4`}>
                         <View style={tw`ml-4 mb-3 md:mr-16 flex h-10 text-gray-500 border-2 rounded border-purple-700`}>
@@ -59,7 +59,7 @@ export default function Navbar({ fixed, bottomBar }: Prop) {
                             </button>
                         </View>
                     </View>
-                    
+
                 <nav>
                     <ul className="flex flex-row text-white my-auto">
                         {cookies.access_token == undefined &&
