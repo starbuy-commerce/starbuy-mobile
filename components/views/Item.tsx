@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-native";
 import Navbar from "../Navbar";
-import addToCart from '../../images/add-to-cart.svg';
-import buyNow from '../../images/buy-now.svg';
-import { useCookies } from "@react-native-cookies/cookies";
 import Review from "../Review";
-import { proxied_host } from "../../api/spec"
 import User from "../../model/User";
 import UserStorage from "../../model/UserStorage";
 import { get_item_with_reviews, ItemWithReviews } from "../../api/item";
-import ItemWithAssets from "../../model/ItemWithAssets";
 import { post_cart } from "../../api/cart";
 import { Response } from "../../model/Response";
 import { get_user_received_reviews, post_review, ReviewsWithAverage } from "../../api/review";
-import { View, ViewComponent } from "react-native";
+import { View, } from "react-native";
 import { Text } from "react-native-paper";
 
-import { Link, useNavigate } from "react-router-dom";
 import { Image } from "react-native";
 import tw from 'twrnc';
 
@@ -30,6 +24,8 @@ type Props = {
 
 export default function Item({navigation}: any) {
 
+    const addToCart = require('../../images/add-to-cart.svg')
+    const buyNow = require('../../images/buy-now.svg')
     const { id } = useParams();
 
     const [seller, setSeller] = useState<User>()
@@ -39,7 +35,6 @@ export default function Item({navigation}: any) {
     const [title, setTitle] = useState<string>("")
     const [reviews, setReviews] = useState<any[]>([])
     const [rateSum, setRateSum] = useState(0);
-    const [cookies, setCookie] = useCookies();
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(0);
     const [sellerRating, setSellerRating] = useState(0);
