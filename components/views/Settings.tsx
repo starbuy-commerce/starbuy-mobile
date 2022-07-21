@@ -36,7 +36,7 @@ export default function Settings() {
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
                 'Access-Control-Allow-Origin': '*',
-                'Authorization:': "Bearer " + //cookies.access_token
+                'Authorization:': "Bearer " //+ cookies.access_token
             },
         })
         .then(response => response.json())

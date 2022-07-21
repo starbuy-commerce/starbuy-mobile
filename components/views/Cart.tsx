@@ -8,10 +8,8 @@ import { Text } from "@react-native-material/core";
 import tw from 'twrnc';
 
 const Cart = () => {
-    const [cookies] = useCookies();
     const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-    useEffect(() => get_cart(cookies.access_token, (resp: CartItem[]) => setCartItems(resp)), [])
 
     return (
         <View>
@@ -36,4 +34,4 @@ const Cart = () => {
     )
 }
 
-export default Cart
+export default Cart;

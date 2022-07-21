@@ -11,15 +11,16 @@
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, {type PropsWithChildren} from 'react';
-import {
-  Button,
-  StyleSheet
-} from 'react-native';
+import {  Button,  StyleSheet } from 'react-native';
 
 import HomeScreen from './components/views/Home';
 import ItemScreen from './components/views/Item';
 import OrderCheckout from './components/views/OrderCheckout';
 import Orders from './components/views/Orders'
+import Cart from './components/views/Cart';
+import User from './components/views/User';
+import Settings from './components/views/Settings';
+import LoginForm from './components/views/LoginForm';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -31,18 +32,40 @@ const App = () => {
           name="Home"
           component={HomeScreen}
         />
+      
         <Stack.Screen
           name="Item"
           component={ItemScreen}
         />
+      
         <Stack.Screen
           name="Orders"
           component={Orders}
         />
+      
         <Stack.Screen
           name="Checkout"
           component={OrderCheckout}
         />
+       
+        <Stack.Screen
+          name="Cart"
+          component={Cart}
+        />
+      
+      <Stack.Screen
+        name="User"
+        component={User}
+      />
+      
+      <Stack.Screen
+      name="Settings"
+      component={Settings}
+    />  
+      <Stack.Screen
+      name="LoginForm"
+      component={LoginForm}
+    /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
