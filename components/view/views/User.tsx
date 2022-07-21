@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-native";
 import UserStorage from "../../model/UserStorage";
 import Navbar from "../Navbar";
 import { proxied_host } from "../../api/spec"
+
+import { View, Text, Image  } from "react-native";
+import tw from 'twrnc';
+import { Component } from 'react';
 
 export default function User() {
     
@@ -31,19 +35,19 @@ export default function User() {
     }, [])
 
     return (
-        <div>
+        <View>
             <Navbar fixed={false} bottomBar={false}/>
-            <div className="w-full h-24 from-[#6366F1] via-[#6366F1] to-[#7ED8FF] bg-gradient-to-r relative visible">
-                <div>
-                    <p className="font-inter text-white absolute mt-8 ml-48 font-bold text-xl">
+            <View style={tw`w-full h-24 from-[#6366F1] via-[#6366F1] to-[#7ED8FF] bg-gradient-to-r relative visible`}>
+                <View>
+                    <Text style={tw`font-inter text-white absolute mt-8 ml-48 font-bold text-xl`}>
                         {name.toUpperCase()}
-                    </p>
-                    <p className="font-inter text-white absolute mt-16 ml-48 font-light text-sm">
+                    </Text>
+                    <Text style={tw`font-inter text-white absolute mt-16 ml-48 font-light text-sm`}>
                         {city.toUpperCase()}
-                    </p>
-                </div>
-            </div>
-            <img src={profilePicture} className="rounded-full border-yellow-400 border-4 w-32 h-32 absolute top-32 ml-10"/>
-        </div>
+                    </Text>
+                </View>
+            </View>
+            <Image source={require(profilePicture)} style={tw`rounded-full border-yellow-400 border-4 w-32 h-32 absolute top-32 ml-10`}/>
+        </View>
     )
 } 

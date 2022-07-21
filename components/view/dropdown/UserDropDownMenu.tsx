@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useCookies } from "react-cookie";
+import { useCookies } from "@react-native-cookies/cookies";
 import { isatty } from "tty";
 import UserStorage from "../../model/UserStorage";
 

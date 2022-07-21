@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { setUncaughtExceptionCaptureCallback } from "process";
 import React, { createRef, RefObject, useRef, useState } from "react";
-import { useCookies } from "react-cookie";
+import { useCookies } from "@react-native-cookies/cookies";
 import { delete_cart } from "../../api/cart";
 import Item from "../../model/Item";
 import ItemWithAssets from "../../model/ItemWithAssets";

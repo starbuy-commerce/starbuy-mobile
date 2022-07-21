@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-native";
 import Navbar from "../Navbar";
 import addToCart from '../../images/add-to-cart.svg';
 import buyNow from '../../images/buy-now.svg';
-import { useCookies } from "react-cookie";
+import { useCookies } from "@react-native-cookies/cookies";
 import Review from "../Review";
 import { json } from "stream/consumers";
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
@@ -125,7 +125,7 @@ export default function Item() {
 
     return (
 
-        <div className="mb-8">
+        <View style={tw`mb-8`}>
             <Navbar fixed={true} bottomBar={true} />
             <div className="mt-24 bg-gray-100 p-5 md:flex justify-center">
                 <div className="md:w-3/5 md:flex p-5 rounded-xl bg-white border-[1px] border-gray-300">

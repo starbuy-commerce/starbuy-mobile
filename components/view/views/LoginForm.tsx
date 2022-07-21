@@ -1,5 +1,9 @@
+import { View, Text, Image  } from "react-native";
+import tw from 'twrnc';
+import { Component } from 'react';
+
 import shopping from '../../images/shopping.jpg'
-import cookie, { useCookies } from "react-cookie";
+import cookie, { useCookies } from "@react-native-cookies/cookies";
 import { useEffect, useState } from 'react';
 import UserStorage from '../../model/UserStorage';
 import { proxied_host } from "../../api/spec"

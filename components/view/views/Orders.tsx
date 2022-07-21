@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-native";
 import useQuery from "../../hook/useQuery";
 import ItemWithAssets from "../../model/ItemWithAssets";
 import Navbar from "../Navbar"
 import { proxied_host } from "../../api/spec"
-import { Radio, Snackbar } from "@mui/material";
-import { indigo, pink, purple } from "@mui/material/colors";
-import RadioGroup from '@mui/material/RadioGroup';
+import { RadioButton, Text } from 'react-native-paper';
+import { Snackbar } from "@react-native-material/core";
+import { indigo, pink, purple } from "@react-native-material/core";
 import CreditCardForm from "../payment/CreditCardForm";
 import BoletoForm from "../payment/BoletoForm";
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import { useCookies } from "react-cookie";
+import MuiAlert, { AlertProps } from '@react-native-material/alert';
+import { useCookies } from "@react-native-cookies/cookies";
 import { post_order } from "../../api/order";
 import { Response } from "../../model/Response";
 import { get_item, ItemWithAverage } from "../../api/item";
+
+import { View, Image  } from "react-native";
+import tw from 'twrnc';
+import { Component } from 'react';
+
 
 interface Props {
     item: ItemWithAssets,
@@ -78,24 +83,26 @@ export default function OrderCheckout() {
     }
 
     return (
-        <div>
+        <View>
             <Navbar fixed={false} bottomBar={true} />
-            <div className="p-5 bg-gray-100">
-                <div className="bg-white p-10 rounded-xl">
-                    <p className="font-bold font-inter text-2xl text-gray-700">CONFIRMAR PEDIDO:</p>
-                    <p className="ml-20 mt-12 font-inter font-semibold text-xl text-gray-800">REVISAR ITEM:</p>
-                    <div className="flex mt-8 ml-20">
-                        <img src={item?.assets[0]} className="w-32 h-32" />
-                        <div className="font-inter my-auto ml-12 font-normal text-xl text-gray-800 gap-y-4">
-                            <p className="mb-3"><b>COMPRANDO</b>: {item?.item.title}</p>
-                            <p className="mb-3"><b>QUANTIDADE</b>: {quantity} unidade(s)</p>
-                            <p><b>PREÇO FINAL:</b> R$ {item?.item.price! * parseInt(quantity!)}</p>
-                        </div>
-                    </div>
-                    <p className="ml-20 mt-20 font-inter font-semibold text-xl text-gray-800">FORMA DE PAGAMENTO:</p>
+            <View style={tw`p-5 bg-gray-100`}>
+                <View style={tw`bg-white p-10 rounded-xl`}>
+                    <Text style={tw`font-bold font-inter text-2xl text-gray-700`}>CONFIRMAR PEDIDO:</Text>
+                    <Text style={tw`ml-20 mt-12 font-inter font-semibold text-xl text-gray-800`}>REVISAR ITEM:</Text>
+                    <View style={tw`flex mt-8 ml-20`}>
 
-                    <div className="flex justify-center gap-24 mt-8">
-                        <div className="flex">
+                        <Image source={require(item?.assets[0])} style={tw`w-32 h-32`}/>
+                        
+                        <View style={tw`font-inter my-auto ml-12 font-normal text-xl text-gray-800 gap-y-4`}>
+                            <Text stylw={tw`mb-3`}><b>COMPRANDO</b>: {item?.item.title}</Text>
+                            <Text style={tw`mb-3`}><b>QUANTIDADE</b>: {quantity} unidade(s)</Text>
+                            <Text><b>PREÇO FINAL:</b> R$ {item?.item.price! * parseInt(quantity!)}</Text>
+                        </View>
+                    </View>
+                    <Text style={tw`ml-20 mt-20 font-inter font-semibold text-xl text-gray-800`}>FORMA DE PAGAMENTO:</p>
+
+                    <View style={tw`flex justify-center gap-24 mt-8`}>
+                        <View style={tw`flex`}>
                             <Radio {...controlProps('a')} sx={{
                                 color: indigo[700],
                                 '&.Mui-checked': {
@@ -103,10 +110,10 @@ export default function OrderCheckout() {
                                 },
                             }}
                             />
-                            <p className="my-auto font-inter font-medium">Cartão de crédito</p>
-                        </div>
+                            <Text style={tw`my-auto font-inter font-medium`}>Cartão de crédito</Text>
+                        </View>
 
-                        <div className="flex">
+                        <View style={tw`flex`}>
                             <Radio {...controlProps('b')} sx={{
                                 color: indigo[700],
                                 '&.Mui-checked': {
@@ -114,25 +121,25 @@ export default function OrderCheckout() {
                                 },
                             }}
                             />
-                            <p className="my-auto font-inter font-medium">Boleto bancário</p>
-                        </div>
+                            <Text style={tw`my-auto font-inter font-medium`}>Boleto bancário</Text>
+                        </View>
 
-                    </div>
+                    </View>
 
-                    <div className="mx-auto flex justify-center mt-6">
+                    <View style={tw`mx-auto flex justify-center mt-6`}>
                         {payment == 'a' ? <CreditCardForm />
                             : payment == 'b' ? <BoletoForm />
                                 : <></>}
-                    </div>
+                    </View>
 
-                    <div className="flex justify-center mt-10 hover:cursor-pointer" onClick={postOrder}>
-                        <div className="w-1/5 bg-indigo-500 p-2 py-3 rounded-[0.250rem] hover:bg-indigo-600">
-                            <p className="font-inter font-semibold text-lg text-white text-center">FINALIZAR PEDIDO</p>
-                        </div>
-                    </div>
+                    <View style={tw`flex justify-center mt-10 hover:cursor-pointer`} onPress={(postOrder)}>
+                        <View style={tw`w-1/5 bg-indigo-500 p-2 py-3 rounded-[0.250rem] hover:bg-indigo-600`}>
+                            <Text style={tw`font-inter font-semibold text-lg text-white text-center`}>FINALIZAR PEDIDO</p>
+                        </View>
+                    </View>
 
-                </div>
-            </div>
+                </View>
+            </View>
             <Snackbar open={successSnack} autoHideDuration={4000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                     {successMessage}
@@ -143,6 +150,6 @@ export default function OrderCheckout() {
                     {errorMessage}
                 </Alert>
             </Snackbar>
-        </div>
+        </View>
     );
 }

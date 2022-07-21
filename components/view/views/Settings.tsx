@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useCookies } from "react-cookie";
+import { useCookies } from "@react-native-cookies/cookies";
 import UserStorage from "../../model/UserStorage";
 import Navbar from "../Navbar";
 import { proxied_host } from "../../api/spec"
