@@ -22,7 +22,7 @@ interface Props {
     quantity: number
 }
 
-export default function OrderCheckout() {
+export default function OrderCheckout({ navigation }: any) {
 
     let query = useQuery();
     const itemId = query.get("item");
@@ -44,11 +44,12 @@ export default function OrderCheckout() {
                 setErrorSnack(true);
                 setErrorMessage(resp.message);
             }
-            //window.location.href = "/orders"
+            navigation.navigate("Orders")
             setSuccessSnack(true);
             setSuccessMessage(resp.message);
         })
     }
+
 
     return (
         <View>
@@ -96,8 +97,8 @@ export default function OrderCheckout() {
                                 : <></>}
                     </View>
 
-                    <TouchableOpacity>
-                        <View style={tw`flex justify-center mt-10 hover:cursor-pointer`} onPress={(postOrder)}>
+                    <TouchableOpacity onPress={(postOrder)}>
+                        <View style={tw`flex justify-center mt-10 hover:cursor-pointer`}>
                             <View style={tw`w-1/5 bg-indigo-500 p-2 py-3 rounded-[0.250rem] hover:bg-indigo-600`}>
                                 <Text style={tw`font-inter font-semibold text-lg text-white text-center`}>FINALIZAR PEDIDO</Text>
                             </View>

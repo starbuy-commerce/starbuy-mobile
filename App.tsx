@@ -18,6 +18,7 @@ import {
 
 import HomeScreen from './components/views/Home';
 import ItemScreen from './components/views/Item';
+import OrderCheckout from './components/views/OrderCheckout';
 import Orders from './components/views/Orders'
 
 const App = () => {
@@ -37,6 +38,10 @@ const App = () => {
         <Stack.Screen
           name="Orders"
           component={Orders}
+        />
+        <Stack.Screen
+          name="Checkout"
+          component={OrderCheckout}
         />
       </Stack.Navigator>
     </NavigationContainer>

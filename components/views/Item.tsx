@@ -28,7 +28,7 @@ type Props = {
     description: string
 }
 
-export default function Item() {
+export default function Item({navigation}: any) {
 
     const { id } = useParams();
 
@@ -75,22 +75,15 @@ export default function Item() {
 
     function postCart() {
         post_cart(id!, 1, cookies.access_token, (resp: Response) => {
-            if(!resp.status) {
-                setErrorSnack(true);
-                setErrorMessage(resp.message);
-                return 
-            }
-            setSuccessSnack(true);
-            setSuccessMessage(resp.message);
+            
         })
+
+        navigation.navigate("Orders")
     }
 
     function postReview() {
         post_review({item: id!, rate: rating*2, message: review}, cookies.access_token, (resp: Response) => {
-            if(!resp.status) {
-                setErrorSnack(true);
-                setErrorMessage(resp.message);
-            } else {
+            if(resp.status) {
                 setReviews(reviews.concat(
                     {
                         user: UserStorage.getUser(),
@@ -98,8 +91,6 @@ export default function Item() {
                         rate: rating*2
                     }
                 ));
-                setSuccessSnack(true);
-                setSuccessMessage(resp.message);
                 setReview("");
                 setRating(0);
             }
