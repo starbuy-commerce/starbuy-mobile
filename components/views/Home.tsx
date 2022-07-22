@@ -2,11 +2,6 @@ import CategoryButton from "../button/CategoryButton";
 import CategoryDropdown from "../dropdown/CategoryDropdown";
 import Navbar from "../Navbar";
 import ProductCard from "../card/ProductCard";
-import tech from "../images/category/tech.svg"
-import clothes from "../../images/category/clothes.svg"
-import books from "../../images/category/books.svg"
-import home from "../../images/category/home.svg"
-import guitarLogo from "../../images/category/guitar.svg"
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Review from "../Review";
@@ -23,7 +18,12 @@ const Home = () => {
     const { category } = useParams();
     const [items, setItems] = useState<ItemWithAssets[]>([])
     const { query } = useParams();
-
+    const tech=require("../images/category/tech.svg")
+    const clothes=require("../../images/category/clothes.svg")
+    const books=require("../../images/category/books.svg")
+    const home=require("../../images/category/home.svg")
+    const guitarLogo=require("../../images/category/guitar.svg")
+    
     useEffect(() => {
         if(category === undefined && query === undefined) {
             get_items((resp: ItemWithAssets[]) => setItems(resp))

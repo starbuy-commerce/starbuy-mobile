@@ -12,30 +12,24 @@ import UserStorage from "../model/UserStorage";
 import { useState } from "react";
 import UserDropDownMenu from "./dropdown/UserDropDownMenu";
 import HomeScreen from "./HomeScreen";
+import { useNavigation } from '@react-navigation/native';
 
 
 type Prop = { fixed: boolean, bottomBar: boolean };
 
 export default function Navbar({ fixed, bottomBar }: Prop) {
 
+    const navigation = useNavigation();
     const [cookies, setCookie] = useCookies();
     const [dropdownToggled, setDropdown] = useState<boolean>(false);
     const [search, setSearch] = useState<any>("");
+    co
     const Stack = createNativeStackNavigator();
     function query() {
         if(search != "")
         const MyStack = () => {
         return (
-        < NavigationContainer>
-        <Stack.Navigator>
-            <Stack.Screen
-            name="Home"
-            component={}
-            options={{ title: 'Welcome' }}
-            />
-            <Stack.Screen name="Profile" component={} />
-        </Stack.Navigator>
-        </NavigationContainer>
+        navigation.navigate("/search/"+search.replaceAll(" ","%20"))
     );
     };
             //window.location.href = "/search/" + search.replaceAll(" ", "%20")

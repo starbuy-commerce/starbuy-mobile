@@ -1,9 +1,10 @@
 import Input from "../Input"
-import pix from "../../images/pix.svg"
+
 import { View, Text } from "react-native";
 import tw from 'twrnc';
 
 export default function BoletoForm() {
+    const pix=require("../../images/pix.svg")
     return (
         <View style={tw`w-2/5`}>
             <View style={tw`flex mb-2`}>

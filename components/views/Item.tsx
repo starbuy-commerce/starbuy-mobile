@@ -104,7 +104,7 @@ export default function Item({navigation}: any) {
                         <View>
                             <Text style={tw`text-2xl font-inter font-semibold ml-2 mr-2 text-gray-800`}>{title}</Text>
                             <View style={tw`font-inter text-4xl font-normal text-gray-800 static mt-8 ml-2 flex`}>
-                                <Text style={tw`text-2xl mr-2`}>R$</p>
+                                <Text style={tw`text-2xl mr-2`}>R$</Text>
                                 <Text style={tw`font-semibold`}>{preco.toFixed(2)}</Text>
                             </View>
                             <View style={tw`flex`}>
@@ -186,15 +186,17 @@ export default function Item({navigation}: any) {
                             </TouchableOpacity>
                             <View style={tw`flex`}>
                                 <View style={tw`mt-3 md:mt-2`}>
+                                    <TouchableOpacity>
                                     <Rating
                                         size="medium"
                                         name="simple-controlled"
                                         value={rating}
                                         precision={0.5}
-                                        onChange={(event, newValue: "") => {
+                                        onPress={(event, newValue: "") => {
                                             setRating(newValue);
                                         }}
                                     />
+                                    </TouchableOpacity>
                                 </View>
                                 <TouchableOpacity  onPress={postReview}>
                                 <View style={tw`ml-auto mr-0 mt-2 rounded-md bg-yellow-400 hover:cursor-pointe`}>

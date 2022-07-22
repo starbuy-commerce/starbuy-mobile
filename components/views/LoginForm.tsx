@@ -1,20 +1,18 @@
 import { View, Text, Image  } from "react-native";
 import tw from 'twrnc';
 import { Component } from 'react';
-
-import shopping from '../../images/shopping.jpg'
-import cookie, { useCookies } from "@react-native-cookies/cookies";
 import { useEffect, useState } from 'react';
 import UserStorage from '../../model/UserStorage';
 import { proxied_host } from "../../api/spec"
 import { AuthResponse, login } from '../../api/user';
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function LoginForm() {
 
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [cookies, setCookie] = useCookies();
-    const [error, setError] = useState<string>("")    
+    const [error, setError] = useState<string>("")
+    const shopping=require('../../images/shopping.jpg')    
 
     function handleUsernameChange(event: { target: HTMLInputElement; }) {
         setUsername(() => event.target.value)
@@ -36,13 +34,12 @@ export default function LoginForm() {
                 setPassword("");
                 setUsername("");
             } else {
-                setCookie('access_token', resp.jwt, { path: '/' });
                 UserStorage.setEmail(resp.user.email);
                 UserStorage.setUsername(resp.user.username);
                 UserStorage.setName(resp.user.name);
                 UserStorage.setCity(resp.user.city);
                 UserStorage.setPfp(resp.user.profile_picture);
-                window.location.href = "/"
+                
                 setError("");
             }
         })
