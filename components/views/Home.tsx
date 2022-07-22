@@ -2,7 +2,7 @@ import CategoryButton from "../button/CategoryButton";
 import CategoryDropdown from "../dropdown/CategoryDropdown";
 import Navbar from "../Navbar";
 import ProductCard from "../card/ProductCard";
-import tech from "../../images/category/tech.svg"
+import tech from "../images/category/tech.svg"
 import clothes from "../../images/category/clothes.svg"
 import books from "../../images/category/books.svg"
 import home from "../../images/category/home.svg"

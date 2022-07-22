@@ -8,7 +8,6 @@ import TransitionButton from "./button/TransitionButton";
 import cart from '../images/cart.svg'
 import logo from '../images/logo.png';
 import login from '../images/login.svg';
-import { useCookies } from "react-cookie";
 import UserStorage from "../model/UserStorage";
 import { useState } from "react";
 import UserDropDownMenu from "./dropdown/UserDropDownMenu";
