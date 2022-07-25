@@ -1,13 +1,9 @@
-import { View, Text, Image  } from "react-native";
+import { View, Text, Image, TouchableOpacity  } from "react-native";
 import tw from 'twrnc';
 import { Component } from 'react';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TransitionButton from "./button/TransitionButton";
-import cart from '../images/cart.svg'
-import logo from '../images/logo.png';
-import login from '../images/login.svg';
 import UserStorage from "../model/UserStorage";
 import { useState } from "react";
 import UserDropDownMenu from "./dropdown/UserDropDownMenu";
@@ -15,32 +11,36 @@ import HomeScreen from "./HomeScreen";
 import { useNavigation } from '@react-navigation/native';
 
 
+
 type Prop = { fixed: boolean, bottomBar: boolean };
 
-export default function Navbar({ fixed, bottomBar }: Prop) {
+export default function Navbar({navigation}: any , { fixed, bottomBar }: Prop) {
 
-    const navigation = useNavigation();
-    const [cookies, setCookie] = useCookies();
+    //const navigation = useNavigation();
+    //const [cookies, setCookie] = useCookies();
     const [dropdownToggled, setDropdown] = useState<boolean>(false);
     const [search, setSearch] = useState<any>("");
-    co
+    const cart= require('../images/cart.svg')
+    const logo=require('../images/logo.png')
+    const login=require('../images/login.svg')
+
     const Stack = createNativeStackNavigator();
     function query() {
         if(search != "")
-        const MyStack = () => {
-        return (
-        navigation.navigate("/search/"+search.replaceAll(" ","%20"))
-    );
-    };
-            //window.location.href = "/search/" + search.replaceAll(" ", "%20")
-    }
+        {
+        return(navigation.navigate("/search/"+search.replaceAll(" ","%20")))
+        
+        }
+}
 
     return(
-        <>
+       
             <View style={tw`bg-white top-0 w-screen z-[99] ${fixed ? "fixed" : ""}`}>
                 <View style={tw`flex justify-between`}>
                     <View style={tw`hidden sm:block`}>
-                        <Image source={logo} style={tw`cursor-pointer md:pr-0 h-16 w-36 md:h-16 md:w-56 m-4`} onClick={() => window.location.href = "/"} />
+                        <TouchableOpacity onPress={() => navigation.navigate("/") }>
+                        <Image source={logo} style={tw`cursor-pointer md:pr-0 h-16 w-36 md:h-16 md:w-56 m-4`}  />
+                        </TouchableOpacity>
                     </View>
                     <View id="searchbar" style={tw`pt-1 md:pt-3 mt-4`}>
                         <View style={tw`ml-4 mb-3 md:mr-16 flex h-10 text-gray-500 border-2 rounded border-purple-700`}>
@@ -52,16 +52,16 @@ export default function Navbar({ fixed, bottomBar }: Prop) {
                             </button>
                         </View>
                     </View>
-
+            </View>
                 <nav>
                     <ul className="flex flex-row text-white my-auto">
-                        {cookies.access_token == undefined &&
-                            <TransitionButton duration={200} src={login} target_url="/login" />}
-                        {cookies.access_token != undefined && <UserDropDownMenu visible={true}/>}
+                        {""/*cookies.access_token*/ == undefined &&
+                            <TransitionButton duration={200} src={login} target_url="/login" navigation={undefined} />}
+                        {""/*cookies.access_token*/ != undefined && <UserDropDownMenu visible={true} navigation={undefined}/>}
                     </ul>
                 </nav>
                 {bottomBar && <div className="h-1 bg-indigo-400"></div>}
             </View>
-        </>
+       
     );
 }

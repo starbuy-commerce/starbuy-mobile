@@ -11,9 +11,10 @@ type Props = {
     category: string,
     size: string,
     id: number
+    navigation:any;
 }
 
-export default function CategoryButton({img, category, size, id}: Props) {
+export default function CategoryButton({img, category, size, id, navigation}: Props) {
 
     return (
         <TouchableOpacity onPress={() => navigation.navigate('/category/')}>

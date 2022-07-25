@@ -47,22 +47,22 @@ const Home = () => {
             <Navbar fixed={true} bottomBar={true} />
             <View style={tw`mt-32 mb-10`}>
                 <View style={tw`md:flex gap-6 justify-center hidden`}>
-                    <CategoryButton img={tech} size="w-10 h-10" category="Eletrônico" id={1} />
-                    <CategoryButton img={clothes} size="w-10 h-10" category="Vestuário" id={2} />
-                    <CategoryButton img={books} size="w-8 h-8" category="Livros" id={4} />
-                    <CategoryButton img={guitarLogo} size="w-8 h-8" category="Música" id={7} />
-                    <CategoryButton img={home} size="w-8 h-8" category="Casa" id={3} />
+                    <CategoryButton img={tech} size="w-10 h-10" category="Eletrônico" id={1} navigation={undefined} />
+                    <CategoryButton img={clothes} size="w-10 h-10" category="Vestuário" id={2} navigation={undefined} />
+                    <CategoryButton img={books} size="w-8 h-8" category="Livros" id={4} navigation={undefined} />
+                    <CategoryButton img={guitarLogo} size="w-8 h-8" category="Música" id={7} navigation={undefined} />
+                    <CategoryButton img={home} size="w-8 h-8" category="Casa" id={3} navigation={undefined} />
                 </View>
                 
                 <View style={tw`md:hidden md:invisible`}>
-                    <CategoryDropdown/>
+                    <CategoryDropdown navigation={undefined}/>
                 </View>
 
                 <View style={tw`flex gap-6 flex-wrap md:pr-24 md:pl-24 md:gap-y-7 mt-12 justify-center z-0`}>
                     {items === null ? <p>Nenhum item encontrado</p>
                     : items.map(item => {
                         const image: string = item.assets[0];
-                        return (<ProductCard img={image} name={item.item.title} price={item.item.price} id={item.item.identifier} />)
+                        return (<ProductCard img={image} name={item.item.title} price={item.item.price} id={item.item.identifier} navigation={undefined} />)
                     })}
                 </View>
             </View>

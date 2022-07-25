@@ -9,7 +9,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import { Title } from "react-native-paper";
 
-export default function Orders() {
+export default function Orders( {navigation}: any) {
 
     const proxy = 'https://blooming-coast-08475.herokuapp.com/'
     const delivery=require("../images/delivery.svg")    

@@ -24,7 +24,7 @@ const Cart = () => {
                         <View style={tw`overflow-y-auto`}>
                             {cartItems.map(cartItem => {
                                 return (
-                                    <CartCard item={cartItem.item} initial={cartItem.quantity}/>
+                                    <CartCard item={cartItem.item} initial={cartItem.quantity} navigation={undefined}/>
                                 );
                         })}
                     </View>}
