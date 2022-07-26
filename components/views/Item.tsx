@@ -125,7 +125,7 @@ export default function Item({navigation}: any) {
                             <View style={tw`mr-4 text-sm font-inter font-semibold bg-transparent text-indigo-500 py-2 px-3 border border-indigo-500 rounded hover:cursor-pointer`}>
                                 <View style={tw`"flex"`}>
                                     <img src={addToCart} alt="" />
-                                    <span style={tw`ml-2`}>Adicionar ao carrinho</span>
+                                    <View style={tw`ml-2`}>Adicionar ao carrinho</View>
                                 </View>
                             </View>
                             </TouchableOpacity>
@@ -192,7 +192,7 @@ export default function Item({navigation}: any) {
                                         name="simple-controlled"
                                         value={rating}
                                         precision={0.5}
-                                        onPress={(event, newValue: "") => {
+                                        onPress={(newValue:any) => {
                                             setRating(newValue);
                                         }}
                                     />

@@ -1,4 +1,3 @@
-import { useCookies } from "react-cookie";
 import User from "./User";
 
 const UserStorage = (function() {

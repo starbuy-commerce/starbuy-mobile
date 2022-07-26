@@ -6,6 +6,7 @@ import CartItem from "../../model/CartItem";
 import { View } from "react-native";
 import { Text } from "@react-native-material/core";
 import tw from 'twrnc';
+import { Title } from "react-native-paper";
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState<CartItem[]>([])
@@ -16,7 +17,7 @@ const Cart = () => {
             <Navbar bottomBar={true} fixed={false} />
             <View style={tw``}>
                 <View style={tw`"font-inter text-[#4A4A4A]"`}>
-                    <h1 style={tw`"font-inter font-bold text-2xl ml-20 mt-12 mb-12"`}>MEU CARRINHO</h1>
+                    <Title style={tw`"font-inter font-bold text-2xl ml-20 mt-12 mb-12"`}>MEU CARRINHO</Title>
                     {cartItems === null || cartItems === undefined || cartItems.length == 0 
                         ? 
                         <Text style={tw`text-lg font-inter font-medium ml-20`}>Você não tem nenhum item no seu carrinho</Text> 

@@ -3,7 +3,7 @@ import UserStorage from "../../model/UserStorage";
 import Navbar from "../Navbar";
 import { proxied_host } from "../../api/spec"
 
-import { View, Text, Image  } from "react-native";
+import { View, Text, Image,TextInput  } from "react-native";
 import tw from 'twrnc';
 import { Component } from 'react';
 
@@ -36,7 +36,8 @@ export default function Settings() {
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
                 'Access-Control-Allow-Origin': '*',
-                'Authorization:': "Bearer " //+ cookies.access_token
+                'Authorization:': "Bearer " 
+                //+ cookies.access_token
             },
         })
         .then(response => response.json())
@@ -50,11 +51,11 @@ export default function Settings() {
         <View style={tw`"flex relative ml-20 mt-32"`}>
             <View style={tw`"font-inter"`}>
                 <Text style={tw`"font-normal mb-1"`}>Nome:</Text>
-                <input spellCheck="false" type="text" placeholder={name} style={tw`"p-1 border-[1px] border-purple-600 rounded-lg w-96 outline-none"`}/>
+                <TextInput placeholder={name} style={tw`"p-1 border-[1px] border-purple-600 rounded-lg w-96 outline-none"`}/>
             </View>
             <View style={tw`"ml-20 font-inter"`}>
                 <Text style={tw`"font-normal text-gray-800 mb-1"`}>E-mail:</Text>
-                <input spellCheck="false" type="text" placeholder={email} style={tw`"text-gray-600 p-1 border-[1px] border-purple-600 rounded-lg w-96 outline-none"`}/>
+                <TextInput placeholder={email} style={tw`"text-gray-600 p-1 border-[1px] border-purple-600 rounded-lg w-96 outline-none"`}/>
             </View>
         </View>
         </>
