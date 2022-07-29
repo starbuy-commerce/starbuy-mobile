@@ -8,6 +8,7 @@ import { Response } from "../../model/Response";
 
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import tw from 'twrnc';
+import Svg, { Path }from "react-native-svg";
 
 interface Props {
     item: ItemWithAssets,
@@ -53,7 +54,7 @@ export default function CartCard({ item, initial, navigation }: Props) {
                             <TouchableOpacity onPress={less}>
                             <View style={tw`hover:cursor-pointer hover:bg-slate-200 flex justify-center w-8 h-8 border-t-[1px] border-l-[1px] border-b-[1px] border-gray-700 rounded-tl-md rounded-bl-md`}>
                                 <View style={tw`my-auto`}>
-                                    <svg style={tw`"fill-slate-500" width="12" height="12" viewBox="0 0 24 24"`}><path d="M0 10h24v4h-24z" /></svg>
+                                    <Svg style={tw`"fill-slate-500" width="12" height="12" viewBox="0 0 24 24"`}><Path d="M0 10h24v4h-24z" /></Svg>
                                 </View>
                             </View>
                             </TouchableOpacity>
@@ -63,7 +64,7 @@ export default function CartCard({ item, initial, navigation }: Props) {
                             <TouchableOpacity onPress={increase}>
                             <View  style={tw`hover:cursor-pointer hover:bg-slate-200 flex justify-center w-8 h-8 border-t-[1px] border-r-[1px] border-b-[1px] border-gray-700 rounded-tr-md rounded-br-md`}>
                                 <View style={tw`"my-auto"`}>
-                                    <svg style={tw`"fill-slate-500" width="12" height="12" viewBox="0 0 24 24"`}><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+                                    <Svg style={tw`"fill-slate-500" width="12" height="12" viewBox="0 0 24 24"`}><Path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></Svg>
                                 </View>
                             </View>
                             </TouchableOpacity>

@@ -9,10 +9,11 @@ import { post_cart } from "../../api/cart";
 import { Response } from "../../model/Response";
 import { get_user_received_reviews, post_review, ReviewsWithAverage } from "../../api/review";
 import { Touchable, TouchableOpacity, View } from "react-native";
-import { Text } from "react-native-paper";
+import { Text, TextInput } from "react-native-paper";
 import { Rating, AirbnbRating } from 'react-native-elements';
 import { Image } from "react-native";
 import tw from 'twrnc';
+import Svg, { Path } from "react-native-svg";
 
 type Props = {
     img: string,
@@ -124,7 +125,7 @@ export default function Item({navigation}: any) {
                             <TouchableOpacity onPress={postCart}>
                             <View style={tw`mr-4 text-sm font-inter font-semibold bg-transparent text-indigo-500 py-2 px-3 border border-indigo-500 rounded hover:cursor-pointer`}>
                                 <View style={tw`"flex"`}>
-                                    <img src={addToCart} alt="" />
+                                    <Image source={addToCart}/>
                                     <View style={tw`ml-2`}>Adicionar ao carrinho</View>
                                 </View>
                             </View>
@@ -132,8 +133,8 @@ export default function Item({navigation}: any) {
                             <TouchableOpacity onPress={() => navigation}>
                             <View style={tw`text-sm font-inter font-semibold bg-transparent text-indigo-500 py-2 px-3 border border-indigo-500 rounded hover:cursor-pointer`}>
                                 <View style={tw`flex`}>
-                                    <img src={buyNow} alt="" />
-                                    <span style={tw`ml-2`}>Comprar agora</span>
+                                    <Image source={buyNow}/>
+                                    <View style={tw`ml-2`}>Comprar agora</View>
                                 </View>
                             </View>
                             </TouchableOpacity>
@@ -163,7 +164,7 @@ export default function Item({navigation}: any) {
                 <View style={tw`flex justify-center`}>
                     <View style={tw`p-5 w-full md:w-[86.5%] bg-white rounded-xl border-[1px] border-gray-300`}>
                         <View style={tw`flex md:ml-14`}>
-                            <svg style={tw`w-6 h-6 fill-yellow-400 my-auto" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg`}><path d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm0 6.5c-.414 0-.75.336-.75.75v5.5c0 .414.336.75.75.75s.75-.336.75-.75v-5.5c0-.414-.336-.75-.75-.75zm-.002-3c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z" fill-rule="nonzero"/></svg>
+                            <Svg style={tw`w-6 h-6 fill-yellow-400 my-auto" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg`}><Path d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm0 6.5c-.414 0-.75.336-.75.75v5.5c0 .414.336.75.75.75s.75-.336.75-.75v-5.5c0-.414-.336-.75-.75-.75zm-.002-3c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z" fill-rule="nonzero"/></Svg>
                             <Text style={tw`font-inter font-bold text-gray-900 text-lg ml-4 mt-6 mb-6`}>Avaliações dos usuários:</Text>
                         </View>
                         {(reviews === undefined || reviews.length === 0)
@@ -182,7 +183,7 @@ export default function Item({navigation}: any) {
                             })}
                         <View style={tw`md:mx-16 mx-2 mt-10`}>
                             <TouchableOpacity onPress={(e: any) => setReview(e.target.value)}>
-                            <textarea value={review} placeholder="Deixe uma avaliação para esse produto" style={tw`w-full border-[1px] rounded-xl border-indigo-400 outline-none font-inter font-medium text-gray-700 p-3 resize-none`} rows={2} />
+                            <TextInput multiline={true} numberOfLines={2} value={review} placeholder="Deixe uma avaliação para esse produto" style={tw`w-full border-[1px] rounded-xl border-indigo-400 outline-none font-inter font-medium text-gray-700 p-3 resize-none`} />
                             </TouchableOpacity>
                             <View style={tw`flex`}>
                                 <View style={tw`mt-3 md:mt-2`}>

@@ -81,7 +81,7 @@ export default function LoginForm() {
                     </View>
                 </View>
                 <View style={tw`md:h-screen md:float-right md:mr-20`}>
-                    <img src={shopping} style={tw`md:w-full md:h-full`} alt="" />
+                    <Image source={shopping} style={tw`md:w-full md:h-full`}/>
                 </View>
             </View>
         </>

@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import UserStorage from "../../model/UserStorage";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import tw from 'twrnc';
+import Svg, { Path } from "react-native-svg";
+import Line from "../line/Line";
 
 type Prop = { 
     visible: boolean
     navigation:any
 };
+
+
 
 export default function UserDropDownMenu({ visible, navigation }: Prop) {
 
@@ -56,11 +60,11 @@ export default function UserDropDownMenu({ visible, navigation }: Prop) {
                     <>
                     <TouchableOpacity onPress={() => { if(isActive) section.trigger()}}>
                         <View style={tw`flex px-2 hover:cursor-pointer hover:bg-gray-100 text-yel text-gray-700 fill-gray-700`} >
-                            <svg style={tw`my-auto w-6 h-6 ml-2`}><path d={section.svg}/></svg>
+                            <Svg style={tw`my-auto w-6 h-6 ml-2`}><Path d={section.svg}/></Svg>
                             <Text style={tw`font-inter ml-6 font-bold my-3`}>{section.name}</Text>
                         </View>
                     </TouchableOpacity>
-                        {i != arr.length-1 && <hr/>}
+                        {i != arr.length-1 && <Line/>}
                     </>
                 )
             })}
