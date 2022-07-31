@@ -11,7 +11,7 @@ import HomeScreen from "./HomeScreen";
 import { useNavigation } from '@react-navigation/native';
 import { List, TextInput } from "react-native-paper";
 import { Button, ListItem } from "react-native-elements";
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path, SvgXml } from "react-native-svg";
 import Unorderedlist from 'react-native-unordered-list';
 
 

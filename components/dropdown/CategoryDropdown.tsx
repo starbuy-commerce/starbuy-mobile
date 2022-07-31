@@ -2,7 +2,7 @@
 import React, { Component, useState } from "react";
 import { useEffect } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path, SvgXml } from "react-native-svg";
 import tw from 'twrnc';
 import Unorderedlist from 'react-native-unordered-list';
 

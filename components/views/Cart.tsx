@@ -16,8 +16,8 @@ const Cart = () => {
         <View>
             <Navbar bottomBar={true} fixed={false} />
             <View style={tw``}>
-                <View style={tw`"font-inter text-[#4A4A4A]"`}>
-                    <Title style={tw`"font-inter font-bold text-2xl ml-20 mt-12 mb-12"`}>MEU CARRINHO</Title>
+                <View style={tw`font-inter text-[#4A4A4A]`}>
+                    <Title style={tw`font-inter font-bold text-2xl ml-20 mt-12 mb-12`}>MEU CARRINHO</Title>
                     {cartItems === null || cartItems === undefined || cartItems.length == 0 
                         ? 
                         <Text style={tw`text-lg font-inter font-medium ml-20`}>Você não tem nenhum item no seu carrinho</Text> 

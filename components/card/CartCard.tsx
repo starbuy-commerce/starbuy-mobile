@@ -50,11 +50,11 @@ export default function CartCard({ item, initial, navigation }: Props) {
                 </View>
                 <View style={tw`flex flex-col justify-between ml-auto mr-8`}>
                     <View style={tw`mx-auto`}>
-                        <View style={tw`"flex`}>
+                        <View style={tw`flex`}>
                             <TouchableOpacity onPress={less}>
                             <View style={tw`hover:cursor-pointer hover:bg-slate-200 flex justify-center w-8 h-8 border-t-[1px] border-l-[1px] border-b-[1px] border-gray-700 rounded-tl-md rounded-bl-md`}>
                                 <View style={tw`my-auto`}>
-                                    <Svg style={tw`"fill-slate-500" width="12" height="12" viewBox="0 0 24 24"`}><Path d="M0 10h24v4h-24z" /></Svg>
+                                    <Svg style={tw`fill-slate-500" width="12" height="12" viewBox="0 0 24 24`}><Path d="M0 10h24v4h-24z" /></Svg>
                                 </View>
                             </View>
                             </TouchableOpacity>

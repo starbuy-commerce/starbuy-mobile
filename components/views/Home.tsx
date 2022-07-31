@@ -13,16 +13,17 @@ import { View, Text } from "react-native";
 import tw from 'twrnc';
 
 
+
 const Home = () => {
 
     const { category } = useParams();
     const [items, setItems] = useState<ItemWithAssets[]>([])
     const { query } = useParams();
-    const tech=require("../images/category/tech.svg")
-    const clothes=require("../../images/category/clothes.svg")
-    const books=require("../../images/category/books.svg")
-    const home=require("../../images/category/home.svg")
-    const guitarLogo=require("../../images/category/guitar.svg")
+    const tech=require('../images/category/tech.svg')
+    const clothes=require('../../images/category/clothes.svg')
+    const books=require('../../images/category/books.svg')
+    const home=require('../../images/category/home.svg')
+    const guitarLogo=require('../../images/category/guitar.svg')
     
     useEffect(() => {
         if(category === undefined && query === undefined) {
