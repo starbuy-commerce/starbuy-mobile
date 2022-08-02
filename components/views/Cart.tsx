@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import CartCard from "../card/CartCard";
 import { get_cart } from "../../api/cart";
 import CartItem from "../../model/CartItem";
-import { View } from "react-native";
-import { Text } from "@react-native-material/core";
+import { View,Text } from "react-native";
 import tw from 'twrnc';
 import { Title } from "react-native-paper";
 

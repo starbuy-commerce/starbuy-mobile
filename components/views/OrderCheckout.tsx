@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from 'react';
 import { useLocation } from "react-router-native";
 import useQuery from "../../hook/useQuery";
 import ItemWithAssets from "../../model/ItemWithAssets";
 import Navbar from "../Navbar"
 import { proxied_host } from "../../api/spec"
 import { RadioButton, Text } from 'react-native-paper';
-import { Snackbar } from "@react-native-material/core";
 import CreditCardForm from "../payment/CreditCardForm";
 import BoletoForm from "../payment/BoletoForm";
 import { post_order } from "../../api/order";
 import { Response } from "../../model/Response";
 import { get_item, ItemWithAverage } from "../../api/item";
-
-
 import {View, Image, TouchableOpacity} from "react-native";
 import tw from 'twrnc';
-import { Component } from 'react';
 
 
 interface Props {
@@ -61,7 +57,7 @@ export default function OrderCheckout({ navigation }: any) {
                     <Text style={tw`ml-20 mt-12 font-inter font-semibold text-xl text-gray-800`}>REVISAR ITEM:</Text>
                     <View style={tw`flex mt-8 ml-20`}>
 
-                        <Image source={require(item!.assets[0])} style={tw`w-32 h-32`}/>
+                        <Image source={require("")} style={tw`w-32 h-32`}/>
 
                         <View style={tw`font-inter my-auto ml-12 font-normal text-xl text-gray-800 gap-y-4`}>
                             <Text style={tw`mb-3`}><b>COMPRANDO</b>: {item?.item.title}</Text>

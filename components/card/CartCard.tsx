@@ -18,6 +18,11 @@ interface Props {
 
 export default function CartCard({ item, initial, navigation }: Props) {
 
+
+    const menos = require('../../images/menos.png')
+    const mais = require('../../images/mais.png')
+
+    
     const [quantity, setQuantity] = useState(initial)
 
     function less() {
@@ -54,7 +59,7 @@ export default function CartCard({ item, initial, navigation }: Props) {
                             <TouchableOpacity onPress={less}>
                             <View style={tw`hover:cursor-pointer hover:bg-slate-200 flex justify-center w-8 h-8 border-t-[1px] border-l-[1px] border-b-[1px] border-gray-700 rounded-tl-md rounded-bl-md`}>
                                 <View style={tw`my-auto`}>
-                                    <Svg style={tw`fill-slate-500" width="12" height="12" viewBox="0 0 24 24`}><Path d="M0 10h24v4h-24z" /></Svg>
+                                    <Image source={menos} style={tw`width="12" height="12"`}></Image>
                                 </View>
                             </View>
                             </TouchableOpacity>
@@ -64,7 +69,7 @@ export default function CartCard({ item, initial, navigation }: Props) {
                             <TouchableOpacity onPress={increase}>
                             <View  style={tw`hover:cursor-pointer hover:bg-slate-200 flex justify-center w-8 h-8 border-t-[1px] border-r-[1px] border-b-[1px] border-gray-700 rounded-tr-md rounded-br-md`}>
                                 <View style={tw`"my-auto"`}>
-                                    <Svg style={tw`"fill-slate-500" width="12" height="12" viewBox="0 0 24 24"`}><Path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></Svg>
+                                    <Image source={mais} style={tw`width="12" height="12"`}></Image>
                                 </View>
                             </View>
                             </TouchableOpacity>

@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import UserStorage from '../../model/UserStorage';
 import { proxied_host } from "../../api/spec"
 import { AuthResponse, login } from '../../api/user';
-import { NavigationContainer } from "@react-navigation/native";
 import { Button } from "react-native-elements";
 import { TextInput } from "react-native-paper";
 

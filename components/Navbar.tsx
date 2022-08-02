@@ -24,9 +24,10 @@ export default function Navbar({navigation}: any , { fixed, bottomBar }: Prop) {
     //const [cookies, setCookie] = useCookies();
     const [dropdownToggled, setDropdown] = useState<boolean>(false);
     const [search, setSearch] = useState<any>("");
-    const cart= require('../images/cart.svg')
+    const cart= require('../images/cart.png')
     const logo=require('../images/logo.png')
-    const login=require('../images/login.svg')
+    const login=require('../images/login.png')
+    const found = require('../images/found.png')
     
 
     const Stack = createNativeStackNavigator();
@@ -51,9 +52,7 @@ export default function Navbar({navigation}: any , { fixed, bottomBar }: Prop) {
                         <View style={tw`ml-4 mb-3 md:mr-16 flex h-10 text-gray-500 border-2 rounded border-purple-700`}>
                             <TextInput value={search} onChangeText={setSearch} style={tw`w-48 md:w-96 sm:w-16 pl-3 text-sm focus-within:outline-none`} placeholder="Pesquisar produto ou loja" />
                             <Button onPress={query} style={tw`flex items-center justify-center px-4 border-l hover:bg-yellow-300 transition duration-500 ease-in-out`}>
-                                <Svg style={tw`"w-6 h-6 text-indigo-700" fill="#4338CA" viewBox="0 0 24 24`}>
-                                    <Path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
-                                </Svg>
+                                <Image source={found} style={tw`"w-6 h-6 text-indigo-700" fill="#4338CA" viewBox="0 0 24 24`}></Image>
                             </Button>
                         </View>
                     </View>

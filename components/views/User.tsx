@@ -47,7 +47,10 @@ export default function User() {
                     </Text>
                 </View>
             </View>
-            <Image source={require(profilePicture)} style={tw`rounded-full border-yellow-400 border-4 w-32 h-32 absolute top-32 ml-10`}/>
+
+          
+        
         </View>
     )
 } 
+//<Image source={require(profilePicture)} style={tw`rounded-full border-yellow-400 border-4 w-32 h-32 absolute top-32 ml-10`}/>

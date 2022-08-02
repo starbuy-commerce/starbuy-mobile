@@ -1,8 +1,6 @@
 import { Link, useNavigate } from "react-router-native";
 import { View, Text, Image } from "react-native";
 import { Touchable, TouchableOpacity,} from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import tw from 'twrnc';
 import {List} from "react-native-paper"

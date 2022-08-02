@@ -13,7 +13,6 @@ import { Text, TextInput } from "react-native-paper";
 import { Rating, AirbnbRating } from 'react-native-elements';
 import { Image } from "react-native";
 import tw from 'twrnc';
-import Svg, { Path, SvgUri, SvgXml } from "react-native-svg";
 
 type Props = {
     img: string,
@@ -25,8 +24,9 @@ type Props = {
 
 export default function Item({navigation}: any) {
 
-    const addToCart = require('../../images/add-to-cart.svg')
-    const buyNow = require('../../images/buy-now.svg')
+    const addToCart = require('../../images/add-to-cart.png')
+    const buyNow = require('../../images/buy-now.png')
+    const info = require('../../images/info.png')
     const { id } = useParams();
 
     const [seller, setSeller] = useState<User>()
@@ -164,7 +164,7 @@ export default function Item({navigation}: any) {
                 <View style={tw`flex justify-center`}>
                     <View style={tw`p-5 w-full md:w-[86.5%] bg-white rounded-xl border-[1px] border-gray-300`}>
                         <View style={tw`flex md:ml-14`}>
-                            <SvgXml style={tw`w-6 h-6 fill-yellow-400 my-auto`} clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xml="http://www.w3.org/2000/svg"><Path d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm0 6.5c-.414 0-.75.336-.75.75v5.5c0 .414.336.75.75.75s.75-.336.75-.75v-5.5c0-.414-.336-.75-.75-.75zm-.002-3c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z" fill-rule="nonzero"/></SvgXml>
+                            <Image source={info} style={tw`w-6 h-6 fill-yellow-400 my-auto`}></Image>
                             <Text style={tw`font-inter font-bold text-gray-900 text-lg ml-4 mt-6 mb-6`}>Avaliações dos usuários:</Text>
                         </View>
                         {(reviews === undefined || reviews.length === 0)
